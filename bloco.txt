@@ -1,0 +1,26 @@
+npm init
+
+npm nodemon
+
+npm install
+
+insomnia baixar
+
+
+
+//put atualiza
+app.put("/alunos/:id", (request, response) => {
+  const { id } = request.params;
+  const { nome, curso } = request.body;
+  const newAlunos = { id, nome, curso };
+  const alunoindex = alunos.findIndex((aluno) => aluno.id == id);
+  alunos[alunoindex] = newAlunos;
+});
+return response.json(newAlunos);
+
+app.delete("/alunos/:id", (request, response) => {
+  const { id } = request.params;
+  const alunoindex = alunos.findIndex((aluno) => aluno.id == id);
+  alunos.splice(alunoindex, 1);
+  return response.status(204).send();
+});
